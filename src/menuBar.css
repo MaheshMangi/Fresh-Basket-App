@@ -1,0 +1,243 @@
+
+/* Icon and text alignment in links */
+.nav-links a {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* space between icon and text */
+  color: var(--link-color);
+  text-decoration: none;
+  font-size: 16px;
+  padding: 8px 0;
+  position: sticky;
+ 
+  transition: color 0.3s ease;
+}
+
+.nav-links a svg {
+  font-size: 18px; /* icon size */
+  vertical-align: middle;
+}
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Theme variables */
+  :root {
+    --bg-color: #f4f4f4;
+    --text-color: #333;
+    --nav-bg: linear-gradient(90deg, #4b6cb7, #182848);
+    --link-color: white;
+    --link-hover-bg: rgba(255, 255, 255, 0.2);
+  }
+  
+  body.dark {
+    --bg-color: #121212;
+    --text-color: #f4f4f4;
+    --nav-bg: #222;
+    --link-color: #eee;
+    --link-hover-bg: #444;
+  }
+  
+  /* Nav Bar */
+  nav {
+    background: var(--nav-bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+  
+  /* Nav Links Container */
+  .nav-links {
+    display: flex;
+    gap: 20px;
+  }
+  
+  nav a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-size: 16px;
+    position: sticky;
+    padding: 8px 0;
+  }
+  
+  /* Animated underline on hover */
+  nav a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--link-color);
+    transition: 0.3s ease;
+  }
+  
+  nav a:hover::after {
+    width: 100%;
+  }
+  
+  /* Toggle button */
+  .toggle-btn {
+    background: none;
+    border: 2px solid white;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s ease;
+  }
+  
+  .toggle-btn:hover {
+    background-color: var(--link-hover-bg);
+  }
+  
+  /* Hamburger menu for small screens */
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  
+  .menu-toggle span {
+    height: 3px;
+    width: 25px;
+    background: white;
+    margin: 4px;
+    transition: 0.3s ease;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      background: var(--nav-bg);
+      text-align: center;
+    }
+  
+    .nav-links.active {
+      display: flex;
+    }
+  
+    .menu-toggle {
+      display: flex;
+    }
+  }
+
+
+
+  .cart-total {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff5722; /* Red-Orange color */
+  }
+  .clear-cart {
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  
+  .clear-cart:hover {
+    background-color: darkred;
+  }
+  .logo {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+    
+   
+  .cart-count {
+    background-color: #f40a0a;
+    color: #1e293b;
+    font-weight: bold;
+    padding: 0.1rem 0.3rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+     
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .cart-count:hover {
+    background-color: #f59e0b;
+    transform: scale(1.1);
+  }
+
+   /* Footer Styles */
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  margin-top: 30px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.footer-links {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-link {
+  color: #4CAF50;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.footer-link:hover {
+  color: #e91e63;
+}
+
+.social-icons {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-link {
+  color: #fff;
+  font-size: 1.5rem;
+  transition: color 0.3s;
+}
+
+.social-link:hover {
+  color: #4CAF50;
+}
+
+  

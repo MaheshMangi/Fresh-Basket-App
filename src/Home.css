@@ -1,0 +1,79 @@
+.home-link {
+    background-color: #4b6cb7;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+  
+  .home-link:hover {
+    background-color: #3553a2;
+  }
+
+
+  .h {
+    text-align: center;
+    background-color: bisque;
+    padding: 20px 0;
+    margin: 40px;
+  }
+  
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    background-color: white;
+  }
+  
+  .cart {
+    width: fit-content;
+    border: 2px solid rgba(251, 252, 253, 0.918);
+    background-color: rgba(255, 255, 255, 0.902);
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgb(41, 40, 40);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .cart h2 {
+    font-weight: bold;
+  }
+  
+  .cart:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 16px hsla(150, 2%, 21%, 0.893);
+  }
+  
+  .m {
+    background-color: orangered;
+    color: white;
+    width: 100px;
+    border: none;
+    padding: 8px;
+    border-radius: 10px;
+    transition: 0.3s ease;
+    margin-top: 10px;
+  }
+  
+  .m:hover {
+    background-color: green;
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+
+  .home-container {
+    background-image: url('E:\food-court-app\public\home.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+  }
+
+ 

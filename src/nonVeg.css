@@ -1,0 +1,152 @@
+/* Non-Veg Container */
+.nonVeg-container {
+  padding: 20px;
+  text-align: center;
+  background-color: #fafafa;
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+}
+
+.nonVeg-container:hover {
+  background-color: #f0f0f0;
+}
+
+.nonVeg-container h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #2f4f4f;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Non-Veg Items Grid */
+.nonVeg-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Styling for each Non-Veg Item */
+.nonVeg-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  width: 220px;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glow effect on hover */
+.nonVeg-item:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1), 0 0 15px rgba(40, 167, 69, 0.5);
+  transform: translateY(-5px);
+}
+
+/* Image Styling */
+.nonVeg-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* Zoom and brightness effect on hover over the image */
+.nonVeg-item:hover .nonVeg-image {
+  transform: scale(1.08);
+  opacity: 0.95;
+}
+
+/* Name Styling */
+.nonVeg-name {
+  font-size: 18px;
+  margin: 12px 0 8px;
+  color: #333;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Price Styling */
+.nonVeg-price {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+/* Button Styling */
+.nonVeg-item button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect on button */
+.nonVeg-item button:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+.pagination .active {
+  background-color: #ff4081; /* Pink */
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 6px 12px rgba(255, 64, 129, 0.6);
+  transform: scale(1.15);
+}
+
+.pagination .page-number {
+  padding: 12px 18px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-size: 16px;
+  background-color: #00bcd4; /* Light Blue */
+  color: white;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 188, 212, 0.3);
+}
+
+.pagination .page-number:hover {
+  background-color: #0097a7; /* Darker Blue */
+  transform: scale(1.1);
+  box-shadow: 0 6px 10px rgba(0, 151, 167, 0.4);
+}
+
+.pagination .page-number.active {
+  background-color: #ff4081; /* Pink */
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 6px 12px rgba(255, 64, 129, 0.6);
+  transform: scale(1.15);
+}
+
+.pagination button:first-child,
+.pagination button:last-child {
+  font-size: 18px;
+  padding: 14px 20px;
+  background-color: #e43f1d; /* Green */
+  color: white;
+  border-radius: 50%;
+}
+
+.pagination button:first-child:hover,
+.pagination button:last-child:hover {
+  background-color: #2b662e; /* Dark Green */
+  transform: scale(1.1);
+  box-shadow: 0 6px 10px rgba(56, 142, 60, 0.5);
+}
+
+

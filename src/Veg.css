@@ -1,0 +1,275 @@
+/* src/components/Veg.css */
+
+/* Container Styling */
+.veg-container {
+  padding: 40px; 
+  text-align: center;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.3s ease, padding 0.3s ease;
+}
+
+.veg-container:hover {
+  background-color: #e3f2fd;
+  padding: 50px;
+}
+
+h2 {
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  color: #2c3e50;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+h2:hover {
+  color: #1565c0;
+}
+
+/* Grid Layout */
+.veg-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  transition: gap 0.3s ease;
+}
+
+.veg-items:hover {
+  gap: 25px;
+}
+
+/* Individual Card Styling */
+.veg-item {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  width: 220px;
+  height: 350px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.veg-item:hover {
+  transform: translateY(-6px);
+  background-color: #fafafa;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Favorite Icon Styling */
+.fav-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.not-favorite {
+  color: #ccc;
+}
+
+.favorite {
+  color: #e74c3c;
+  transform: scale(1.2);
+}
+
+.fav-icon:hover {
+  transform: scale(1.3);
+}
+
+/* Dynamic Pulsing Effect */
+.veg-item:hover::before {
+  content: "";
+  position: absolute;
+  width: 240px;
+  height: 370px;
+  background-color: rgba(0, 128, 0, 0.1);
+  border-radius: 16px;
+  animation: pulse 1.5s infinite;
+  z-index: -1;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+}
+
+/* Image Styling */
+.veg-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.veg-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Text Styling */
+.veg-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #34495e;
+  margin-bottom: 8px;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.veg-name:hover {
+  color: #2ecc71;
+}
+
+.veg-price {
+  font-size: 1rem;
+  font-weight: 700;
+  color: blueviolet;
+  margin-bottom: 10px;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.veg-price:hover {
+  color: #ff6347;
+}
+
+/* Button Styling */
+button {
+  padding: 8px 16px;
+  background-color: #2ecc71;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  background-color: #27ae60;
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+  background-color: #1e8449;
+  transform: scale(0.95);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  background-color: #00bcd4; /* Light Blue */
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  margin: 0 8px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 188, 212, 0.3);
+}
+
+.pagination button:hover {
+  background-color: #0097a7; /* Darker Blue */
+  transform: scale(1.1);
+  box-shadow: 0 6px 10px rgba(0, 151, 167, 0.4);
+}
+
+.pagination button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.pagination .active {
+  background-color: #ff4081; /* Pink */
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 6px 12px rgba(255, 64, 129, 0.6);
+  transform: scale(1.15);
+}
+
+.pagination .page-number {
+  padding: 12px 18px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-size: 16px;
+  background-color: #00bcd4; /* Light Blue */
+  color: white;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 188, 212, 0.3);
+}
+
+.pagination .page-number:hover {
+  background-color: #0097a7; /* Darker Blue */
+  transform: scale(1.1);
+  box-shadow: 0 6px 10px rgba(0, 151, 167, 0.4);
+}
+
+.pagination .page-number.active {
+  background-color: #ff4081; /* Pink */
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 6px 12px rgba(255, 64, 129, 0.6);
+  transform: scale(1.15);
+}
+
+.pagination button:first-child,
+.pagination button:last-child {
+  font-size: 18px;
+  padding: 14px 20px;
+  background-color: #e43f1d; /* Green */
+  color: white;
+  border-radius: 50%;
+}
+
+.pagination button:first-child:hover,
+.pagination button:last-child:hover {
+  background-color: #2b662e; /* Dark Green */
+  transform: scale(1.1);
+  box-shadow: 0 6px 10px rgba(56, 142, 60, 0.5);
+}
+.price-range-slider {
+  margin: 20px 0;
+  padding: 10px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.price-range-slider input[type="range"] {
+  width: 100%;
+  cursor: pointer;
+}
+

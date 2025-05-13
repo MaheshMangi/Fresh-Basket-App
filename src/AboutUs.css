@@ -1,0 +1,22 @@
+.about-us-container {
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--text-color);
+  }
+  
+  .about-us-container h1,
+  .about-us-container h2 {
+    margin-bottom: 0.5rem;
+    color: #4b6cb7;
+  }
+  
+  .about-us-container ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .about-us-container li::before {
+    content: '🍽️';
+    margin-right: 0.5rem;
+  }
+  
