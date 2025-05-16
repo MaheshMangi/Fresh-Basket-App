@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './nonVeg.css'; // Import the CSS file for Veg component
 import { addToCart } from './store';
+import { toast, ToastContainer } from 'react-toastify';
 
 const nonVeg = () => {
   // Accessing the veg products from the Redux store
@@ -26,13 +27,14 @@ const nonVeg = () => {
   return (
     <div className="nonVeg-container">
       <h2>Non-Veg Products</h2>
+       <ToastContainer position='top-right' autoClose={2000}/>
       <div className="nonVeg-items">
         {currentItems.map((product, index) => (
           <div key={index} className="nonVeg-item">
             <img src={product.image} alt={product.name} className="nonVeg-image" />
             <h3 className="nonVeg-name">{product.name}</h3>
             <p className="nonVeg-price">₹{product.price}</p>
-            <button onClick={() => dispatch(addToCart(product))}>Add To Cart 🛒</button>
+            <button onClick={() => {dispatch(addToCart(product)); toast.success("Product added to cart successfuly")}}>Add To Cart 🛒</button>
           </div>
         ))}
       </div>

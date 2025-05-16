@@ -1,42 +1,59 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Calendar, Tag } from "lucide-react";
+import { Calendar, Tag, ShoppingCart, DollarSign, ChevronDown, ChevronUp } from "lucide-react";
 import "./Orders.css";
 
 function Orders() {
   const orders = useSelector((state) => state.orders);
 
+  const [expandedOrderId, setExpandedOrderId] = useState(null);
+
+  const handleToggle = (orderId) => {
+    setExpandedOrderId(expandedOrderId === orderId ? null : orderId);
+  };
+
   let orderItemsList = [];
 
   if (orders.length === 0) {
-    orderItemsList = <li className="no-orders">No orders available</li>;
+    orderItemsList = <li className="no-orders" >No orders available</li>;
   } else {
-    orderItemsList = orders.map((order, index) => {
-      const itemList = order.items.map((item, idx) => (
-        <li key={idx} className="item-list-item">
-          <img src={item.image} alt={item.name} className="item-image" />
-          <div className="item-details">
-            <span>Name: {item.name}</span>
-            <span>Price: ₹{item.price}</span>
-            <span>Qty: {item.quantity}</span>
-          </div>
-        </li>
-      ));
+    orderItemsList = orders.map((order) => {
+      const isExpanded = expandedOrderId === order.id;
 
       return (
-        <li key={index} className="order-item">
-          <div className="order-header">
-            <p>
-              <Calendar size={16} /> Date: {order.date}
-            </p>
-            <p>
-              <Tag size={16} /> Product ID: {order.id}
-            </p>
+        <li key={order.id} className={`order-item ${isExpanded ? "expanded" : ""}`}>
+          <div className="order-header" onClick={() => handleToggle(order.id)}>
+            <div className="header-left">
+              <Calendar size={18} className="icon" />
+              <p>Date: {order.date}</p>
+            </div>
+
+            <div className="header-right">
+              <Tag size={18} className="icon" />
+              <p className="product-id">OrderID: {order.id}</p>
+              {isExpanded ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+            </div>
           </div>
-          <ul className="item-list">{itemList}</ul>
-          <p className="total">
-            Total:₹{order.finalPrice.toFixed(2)}
-          </p>
+
+          <div className={`order-details ${isExpanded ? "show" : ""}`}>
+            <ul className="item-list">
+              {order.items.map((item, idx) => (
+                <li key={idx} className="item-list-item">
+                  <img src={item.image} alt={item.name} className="item-image" />
+                  <div className="item-details">
+                    <span><ShoppingCart size={14} /> {item.name}</span>
+                    <span>₹{item.price}</span>
+                    <span>Qty: {item.quantity}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+
+            <div className="total">
+              <DollarSign size={16} className="icon" />
+              Total: ₹{order.finalPrice.toFixed(2)}
+            </div>
+          </div>
         </li>
       );
     });
@@ -44,7 +61,7 @@ function Orders() {
 
   return (
     <div className="orders-container">
-      <h2>Orders</h2>
+      <h2>Your Orders</h2>
       <ul className="orders-list">{orderItemsList}</ul>
     </div>
   );

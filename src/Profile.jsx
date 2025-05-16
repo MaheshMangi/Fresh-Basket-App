@@ -3,7 +3,6 @@ import { getCurrentUser, updateUser, clearCurrentUser } from "./store";
 import { useNavigate } from "react-router-dom";
 import "./Profile.css";
 
-
 const Profile = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(getCurrentUser());
@@ -63,93 +62,77 @@ const Profile = () => {
         <img src={formData.avatar} alt="Avatar" width="100" height="100" />
       )}
 
-      <div>
+      <div className="profile-field">
         <label>Name:</label>
-        <input 
-          type="text" 
-          name="name" 
-          value={formData.name} 
-          onChange={handleChange} 
-          disabled={!editable}
-        />
+        {editable ? (
+          <input type="text" name="name" value={formData.name} onChange={handleChange} />
+        ) : (
+          <p>{formData.name}</p>
+        )}
       </div>
 
-      <div>
+      <div className="profile-field">
         <label>Email:</label>
-        <input 
-          type="email" 
-          name="email" 
-          value={formData.email} 
-          disabled 
-        />
+        <p>{formData.email}</p>
       </div>
 
-      <div>
+      <div className="profile-field">
         <label>Password:</label>
-        <input 
-          type="password" 
-          name="password" 
-          value={formData.password} 
-          onChange={handleChange} 
-          disabled={!editable}
-        />
+        {editable ? (
+          <input type="password" name="password" value={formData.password} onChange={handleChange} />
+        ) : (
+          <p>••••••••</p>
+        )}
       </div>
 
-      <div>
+      <div className="profile-field">
         <label>Gender:</label>
-        <select 
-          name="gender" 
-          value={formData.gender} 
-          onChange={handleChange} 
-          disabled={!editable}
-        >
-          <option value="">Select Gender</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Other">Other</option>
-        </select>
+        {editable ? (
+          <select name="gender" value={formData.gender} onChange={handleChange}>
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        ) : (
+          <p>{formData.gender || "Not Specified"}</p>
+        )}
       </div>
 
-      <div>
+      <div className="profile-field">
         <label>Address:</label>
-        <textarea 
-          name="address" 
-          value={formData.address} 
-          onChange={handleChange} 
-          disabled={!editable}
-        ></textarea>
+        {editable ? (
+          <textarea name="address" value={formData.address} onChange={handleChange}></textarea>
+        ) : (
+          <p>{formData.address || "No Address Provided"}</p>
+        )}
       </div>
 
-      <div>
+      <div className="profile-field">
         <label>Phone:</label>
-        <input 
-          type="text" 
-          name="phone" 
-          value={formData.phone} 
-          onChange={handleChange} 
-          disabled={!editable}
-        />
+        {editable ? (
+          <input type="text" name="phone" value={formData.phone} onChange={handleChange} />
+        ) : (
+          <p>{formData.phone || "No Phone Provided"}</p>
+        )}
       </div>
 
-      <div>
+      <div className="profile-field">
         <label>Age:</label>
-        <input 
-          type="number" 
-          name="age" 
-          value={formData.age} 
-          onChange={handleChange} 
-          disabled={!editable}
-        />
+        {editable ? (
+          <input type="number" name="age" value={formData.age} onChange={handleChange} />
+        ) : (
+          <p>{formData.age || "Not Specified"}</p>
+        )}
       </div>
 
-      <div>
+      <div className="profile-field">
         <label>Avatar:</label>
-        <input 
-          type="file" 
-          accept="image/*" 
-          onChange={handleFileChange} 
-          disabled={!editable}
-        />
+        {editable ? (
+          <input type="file" accept="image/*" onChange={handleFileChange} />
+        ) : (
+          <p>Avatar cannot be changed in view mode</p>
+        )}
       </div>
 
       <div className="button-group">

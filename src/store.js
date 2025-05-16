@@ -1,6 +1,6 @@
 // src/redux/productSlice.js
 
-import { createSlice, configureStore } from '@reduxjs/toolkit';
+import { createSlice, configureStore, current } from '@reduxjs/toolkit';
 
 
 //local cart from localstorage
@@ -16,51 +16,51 @@ const productSlice = createSlice({
   { name: 'Ladyfinger', price: 40, image: '/Ladyfinger.jpg' },
   { name: 'Potatoes', price: 20, image: '/Potatoes.jpg' },
   { name: 'Onions', price: 35, image: '/Onions.jpg' },
-  { name: 'Spinach', price: 15, image: '/Spinach.jpg' },
-  { name: 'Cucumber', price: 18, image: '/Cucumber.jpg' },
-  { name: 'Beetroot', price: 22, image: '/Beetroot.jpg' },
-  { name: 'Green Peas', price: 28, image: '/GreenPeas.jpg' },
-  { name: 'Capsicum', price: 38, image: '/Capsicum.jpg' },
-  { name: 'Cabbage', price: 24, image: '/Cabbage.jpg' },
-  { name: 'Cauliflower', price: 30, image: '/Cauliflower.jpg' },
-  { name: 'Broccoli', price: 40, image: '/Broccoli.jpg' },
-  { name: 'Brinjal', price: 27, image: '/Brinjal.jpg' },
-  { name: 'Bitter Gourd', price: 26, image: '/BitterGourd.jpg' },
-  { name: 'Bottle Gourd', price: 22, image: '/BottleGourd.jpg' },
-  { name: 'Pumpkin', price: 20, image: '/Pumpkin.jpg' },
-  { name: 'Radish', price: 19, image: '/Radish.jpg' },
-  { name: 'Turnip', price: 21, image: '/Turnip.jpg' },
-  { name: 'Drumstick', price: 32, image: '/Drumstick.jpg' },
-  { name: 'Coriander Leaves', price: 10, image: '/Coriander.jpg' },
-  { name: 'Mint Leaves', price: 10, image: '/Mint.jpg' },
-  { name: 'Spring Onion', price: 25, image: '/SpringOnion.jpg' },
-  { name: 'Zucchini', price: 45, image: '/Zucchini.jpg' },
-  { name: 'Mushroom', price: 60, image: '/Mushroom.jpg' },
-  { name: 'Sweet Corn', price: 30, image: '/SweetCorn.jpg' },
-  { name: 'Green Beans', price: 34, image: '/GreenBeans.jpg' },
-  { name: 'Red Bell Pepper', price: 50, image: '/RedBellPepper.jpg' },
-  { name: 'Yellow Bell Pepper', price: 50, image: '/YellowBellPepper.jpg' },
-  { name: 'Kale', price: 55, image: '/Kale.jpg' },
+  { name: 'Spinach', price: 15, image: 'public/VegImages/Spinach.jpg' },
+  { name: 'Cucumber', price: 18, image: 'public/VegImages/cucumber.jpg' },
+  { name: 'Beetroot', price: 22, image: 'public/VegImages/Beetroot.jpg' },
+  { name: 'Green Peas', price: 28, image: 'public/VegImages/Green Peas.webp' },
+  { name: 'Capsicum', price: 38, image: 'public/capsicam.jpg' },
+  { name: 'Cabbage', price: 24, image: 'public/VegImages/Cabbage.jpg' },
+  { name: 'Cauliflower', price: 30, image: 'public/VegImages/Cauliflower.jpg' },
+  { name: 'Broccoli', price: 40, image: 'public/VegImages/Broccoli.jpg' },
+  { name: 'Brinjal', price: 27, image: 'public/VegImages/Brinjal.jpg' },
+  { name: 'Bitter Gourd', price: 26, image: 'public/VegImages/Bitter Gourd.jpg' },
+  { name: 'Bottle Gourd', price: 22, image: 'public/VegImages/Bottle Gourd.jpg' },
+  { name: 'Pumpkin', price: 20, image: 'public/VegImages/Pumpkin.jpg' },
+  { name: 'Radish', price: 19, image: 'public/VegImages/Radish.webp' },
+  { name: 'Turnip', price: 21, image: 'public/VegImages/Turnip.jpg' },
+  { name: 'Drumstick', price: 32, image: 'public/VegImages/Drumstick.jpg' },
+  { name: 'Coriander Leaves', price: 10, image: 'public/VegImages/Coriander Leaves.jpg' },
+  { name: 'Mint Leaves', price: 10, image: 'public/VegImages/Mint Leaves.webp' },
+  { name: 'Spring Onion', price: 25, image: 'public/VegImages/Spring Onion.jpg' },
+  { name: 'Zucchini', price: 45, image: 'public/VegImages/Zucchini.jpg' },
+  { name: 'Mushroom', price: 60, image: 'public/VegImages/Mushroom.jpg' },
+  { name: 'Sweet Corn', price: 30, image: 'public/VegImages/Sweet Corn.jpg' },
+  { name: 'Green Beans', price: 34, image: 'public/VegImages/Green Beans.jpg' },
+  { name: 'Red Bell Pepper', price: 50, image: 'public/VegImages/Red Bell Pepper.jpeg' },
+  { name: 'Yellow Bell Pepper', price: 50, image: 'public/VegImages/Yellow Bell Pepper.jpg' },
+  { name: 'Kale', price: 55, image: 'public/VegImages/Kale.jpg' },
   { name: 'Lettuce', price: 40, image: '/Lettuce.jpg' },
-  { name: 'Celery', price: 35, image: '/Celery.jpg' },
-  { name: 'Garlic', price: 25, image: '/Garlic.jpg' },
-  { name: 'Ginger', price: 30, image: '/Ginger.jpg' },
-  { name: 'Chili', price: 20, image: '/Chili.jpg' },
+  { name: 'Celery', price: 35, image: 'public/VegImages/Celery.png' },
+  { name: 'Garlic', price: 25, image: 'public/VegImages/Garlic.jpg' },
+  { name: 'Ginger', price: 30, image: 'public/VegImages/Ginger.jpg' },
+  { name: 'Chili', price: 20, image: 'public/VegImages/Chili.jpg' },
   { name: 'Arbi (Taro Root)', price: 35, image: '/Arbi.jpg' },
-  { name: 'Yam', price: 38, image: '/Yam.jpg' },
-  { name: 'Raw Banana', price: 28, image: '/RawBanana.jpg' },
-  { name: 'Snake Gourd', price: 34, image: '/SnakeGourd.jpg' },
+  { name: 'Yam', price: 38, image: 'public/VegImages/Yam.jpg' },
+  { name: 'Raw Banana', price: 28, image: 'public/VegImages/Raw Banana.jpg' },
+  { name: 'Snake Gourd', price: 34, image: 'public/VegImages/Snake Gourd.png.crdownload' },
   { name: 'Ivy Gourd (Tindora)', price: 29, image: '/IvyGourd.jpg' },
-  { name: 'Ridge Gourd', price: 33, image: '/RidgeGourd.jpg' },
-  { name: 'Ash Gourd', price: 36, image: '/AshGourd.jpg' },
-  { name: 'Raw Mango', price: 45, image: '/RawMango.jpg' },
-  { name: 'Curry Leaves', price: 12, image: '/CurryLeaves.jpg' },
-  { name: 'Fenugreek Leaves', price: 18, image: '/FenugreekLeaves.jpg' },
-  { name: 'Amaranth Leaves', price: 20, image: '/AmaranthLeaves.jpg' },
-  { name: 'Sponge Gourd', price: 31, image: '/SpongeGourd.jpg' },
+  { name: 'Ridge Gourd', price: 33, image: 'public/VegImages/Ridge Gourd.jpg' },
+  { name: 'Ash Gourd', price: 36, image: 'public/VegImages/Ash Gourd.png' },
+  { name: 'Raw Mango', price: 45, image: 'public/VegImages/Raw Mango.jpg' },
+  { name: 'Curry Leaves', price: 12, image: 'public/VegImages/Curry Leaves.jpg' },
+  { name: 'Fenugreek Leaves', price: 18, image: 'public/VegImages/Fenugreek Leaves.jpg' },
+  { name: 'Amaranth Leaves', price: 20, image: 'public/VegImages/Amaranth Leaves.jpg' },
+  { name: 'Sponge Gourd', price: 31, image: 'public/VegImages/Sponge Gourd.jpg' },
   { name: 'Parsley', price: 25, image: '/Parsley.jpg' },
-  { name: 'Leeks', price: 42, image: '/Leeks.jpg' },
-  { name: 'Mustard Greens', price: 33, image: '/MustardGreens.jpg' }
+  { name: 'Leeks', price: 42, image: 'public/VegImages/Leeks.jpg' },
+  { name: 'Mustard Greens', price: 33, image: 'public/VegImages/Mustard Greens.jpg' }
 ],
 
    nonVeg: [
@@ -75,7 +75,7 @@ const productSlice = createSlice({
   { name: 'Salmon Fish', price: 350, image: '/nonVegImages/Salmon Fish.jpg' },
   { name: 'Turkey Meat', price: 270, image: '/nonVegImages/Turkey Meat.jpg' },
   { name: 'Chicken Biriyani', price: 250, image: '/nonVegImages/ChickenBiriyani.jpg' },
-  { name: 'Mutton Biriyani', price: 270, image: '/nonVegImages/MuttonBiriyani.jpg' },
+  { name: 'Mutton Biriyani', price: 270, image: 'public/nonVegImages/Mutton Biriyani.jpg' },
   { name: 'Beef Curry', price: 280, image: '/nonVegImages/Beef Curry.jpg' },
   { name: 'Fish Curry', price: 190, image: '/nonVegImages/Fish Curry.jpg' },
   { name: 'Grilled Chicken', price: 240, image: '/nonVegImages/Grilled Chicken.jpg' },
@@ -83,23 +83,23 @@ const productSlice = createSlice({
   { name: 'Crab Meat', price: 350, image: '/nonVegImages/Crab Meat.jpg' },
   { name: 'Squid Rings', price: 280, image: '/nonVegImages/Squid Rings.jpg' },
   { name: 'Octopus', price: 400, image: '/nonVegImages/Octopus.jpg' },
-  { name: 'Quail Meat', price: 220, image: '/nonVegImages/Quail Meat.jpg' },
+  { name: 'Quail Meat', price: 220, image: 'public/nonVegImages/Quail Meat.webp' },
   { name: 'Rabbit Meat', price: 260, image: '/nonVegImages/Rabbit Meat.jpg' },
   { name: 'Liver Fry', price: 150, image: '/nonVegImages/Liver Fry.jpg' },
-  { name: 'Chicken Sausages', price: 120, image: '/nonVegImages/Chicken Sausages.jpg' },
+  { name: 'Chicken Sausages', price: 120, image: 'public/nonVegImages/Chicken Sausages.webp' },
   { name: 'Beef Sausages', price: 140, image: '/nonVegImages/Beef Sausages.jpg' },
   { name: 'Chicken Nuggets', price: 130, image: '/nonVegImages/Chicken Nuggets.jpg' },
   { name: 'Fish Fingers', price: 140, image: '/nonVegImages/Fish Fingers.jpg' },
   { name: 'Ham Slices', price: 160, image: '/nonVegImages/Ham Slices.jpg' },
   { name: 'Chicken Salami', price: 150, image: '/nonVegImages/Chicken Salami.jpg' },
   { name: 'Beef Burger Patty', price: 180, image: '/nonVegImages/Beef Burger Patty.jpg' },
-  { name: 'Grilled Salmon', price: 370, image: '/nonVegImages/Grilled Salmon.jpg' },
+  { name: 'Grilled Salmon', price: 370, image: 'public/nonVegImages/Grilled Salmon.webp' },
   { name: 'Chicken Seekh Kebab', price: 220, image: '/nonVegImages/Chicken Seekh Kebab.jpg' },
   { name: 'Mutton Kebab', price: 250, image: '/nonVegImages/Mutton Kebab.jpg' },
   { name: 'Egg Curry', price: 100, image: '/nonVegImages/Egg Curry.jpg' },
-  { name: 'Boiled Eggs (Pack of 6)', price: 60, image: '/nonVegImages/Boiled Eggs.jpg' },
+  { name: 'Boiled Eggs (Pack of 6)', price: 60, image: 'public/nonVegImages/Boiled Eggs (Pack of 6).jpg' },
   { name: 'Omelette', price: 50, image: '/nonVegImages/Omelette.jpg' },
-  { name: 'Egg Fried Rice', price: 140, image: '/nonVegImages/Egg Fried Rice.jpg' },
+  { name: 'Egg Fried Rice', price: 140, image: 'public/nonVegImages/Egg Fried Rice.webp' },
   { name: 'Chicken Fried Rice', price: 160, image: '/nonVegImages/Chicken Fried Rice.jpg' },
   { name: 'Fish Tikka', price: 210, image: '/nonVegImages/Fish Tikka.jpg' },
   { name: 'Chicken Tikka', price: 200, image: '/nonVegImages/Chicken Tikka.jpg' },
@@ -113,7 +113,7 @@ const productSlice = createSlice({
   { name: 'Fish Head Curry Cut', price: 130, image: '/nonVegImages/Fish Head Curry Cut.jpg' },
   { name: 'Shellfish Mix', price: 320, image: '/nonVegImages/Shellfish Mix.jpg' },
   { name: 'Anchovies', price: 210, image: '/nonVegImages/Anchovies.jpg' },
-  { name: 'Smoked Salmon', price: 400, image: '/nonVegImages/Smoked Salmon.jpg' }
+  { name: 'Smoked Salmon', price: 400, image: 'public/nonVegImages/Smoked Salmon.webp' }
 ],
 
    milk: [
@@ -276,12 +276,46 @@ const orderSlice = createSlice({
   },
 });
 
+//user Slice
+const userSlice = createSlice({
+  name:'users',
+  initialState:{
+    users:[],
+    isAuthenticated:false,
+    currentUser:null
+  },
+  reducers:{
+    registerUser:(state,action)=>{
+      state.users.push(action.payload);
+    },
+    loginUser:(state,inputData)=>{
+      const foundUser= state.users.find(user=>
+        user.username === inputData.payload.username && user.password === inputData.payload.password
+      );
+      if(foundUser){
+        state.isAuthenticated=true;
+        state.currentUser=foundUser;
+      }
+      else{
+        alert("Invalid Credintials")
+      }
+    },
+    logOut:(state)=>{
+      state.isAuthenticated=false;
+      state.currentUser=null;
+    },
+  }
+   
+});
+ 
+
 // Configure store
 const store = configureStore({
   reducer: {
     products: productSlice.reducer,
     cart: cartSlice.reducer,
     orders: orderSlice.reducer,
+    users:userSlice.reducer,
   },
 });
 
@@ -337,6 +371,7 @@ export const clearCurrentUser = () => {
 // Export cart actions and store
 export const { addToCart, incrementCart, decrementCart, removeFromCart, clearCart } = cartSlice.actions;
 export const { addOrder } = orderSlice.actions;
+export const {registerUser,loginUser,logOut} = userSlice.actions;
 export default store;
 
  

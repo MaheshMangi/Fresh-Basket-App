@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { getUser, setCurrentUser } from "./store";
+import './Login.css';
 
 const Login = () => {
   const [email, setEmail] = useState("");

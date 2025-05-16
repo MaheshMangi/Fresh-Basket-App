@@ -14,10 +14,13 @@ import Cart from './Cart';
 import Orders from './Orders';
 import AboutUs from './AboutUs';
 import ContactUs from './ContactUs';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Register from "./Register"; 
 import Profile from "./Profile";
-import { FaPersonFalling } from 'react-icons/fa6';
+import 'react-toastify/dist/ReactToastify.css';
+import SignUp from './SignUp';
+import { logOut } from './store';
+import SignIn from './SignIn';
  
 
 function App() {
@@ -35,8 +38,12 @@ function App() {
 
   let cartObject = useSelector((globalstate) => globalstate.cart);
   let totalCartCount = cartObject.reduce((totalSum, item) => totalSum + item.quantity, 0);
-
+  
+  const isAuthenticated = useSelector((state)=>state.users.isAuthenticated);
+  const currentUser = useSelector((state)=>state.users.currentUser);
+  
   return (
+    
     <BrowserRouter>
       <nav>
         <div className="menu-toggle" onClick={toggleMenu}>
@@ -45,21 +52,27 @@ function App() {
           <span></span>
         </div>
         <div className="logo">🛒 Fresh<span style={{ color: '#4CAF50' }}>Basket</span></div>
-
+        
         <div className={`nav-links ${menuOpen ? 'active' : ''}`}>
           <Link to="/"><FaHome /> Home</Link>
-          <Link to="/veg"><FaCarrot /> Veg-Items</Link>
-          <Link to="/nonVeg"><FaDrumstickBite /> Non-Veg-Items</Link>
+          <Link to="/veg"><FaCarrot /> Veg</Link>
+          <Link to="/nonVeg"><FaDrumstickBite /> Non-Veg</Link>
           <Link to="/fruites"><FaAppleAlt /> Fruites</Link>
           <Link to="/milk"><FaGlassWhiskey /> Milk</Link>
-          <Link to="/cart"><FaShoppingCart /> Cart <span className="cart-count">{totalCartCount}</span></Link>
+          <Link to="/cart"><FaShoppingCart /> Cart <span className="cart-count"><sup>{totalCartCount}</sup></span></Link>
           <Link to="/orders"><FaClipboardList /> My-Orders</Link>
           <Link to="/login"><FaSignInAlt /> Login</Link>
-          <Link to="/phone-verification"><FaPhone /> OTP Verification</Link>
+          {isAuthenticated ?(
+            <div>
+              <span>welcome,{currentUser.username}</span>
+              <button onClick={()=>useDispatch(logOut())}>LogOut</button>
+            </div>):( <Link to="/signIn">SignIn</Link>)
+          }
+          
           <Link to="/phoneAuth"><FaInfoCircle /> PhoneAuth</Link>
           <Link to="/aboutUs"><FaInfoCircle /> AboutUs</Link>
           <Link to="/contactUs"><FaPhone /> ContactUs</Link>
-          <Link to="/registre"><FaRegistered /> Registre</Link>
+           
           <Link to="/profile"> Profile</Link>
         </div>
 
@@ -83,6 +96,8 @@ function App() {
         <Route path="/phone-verification" element={<PhoneOTPVerification />} />
          <Route path="/registre" element={<Register />} /> 
           <Route path="/profile" element={<Profile />} />
+           <Route path="/signUp" element={<SignUp />} />
+            <Route path="/signIn" element={<SignIn />} />
       </Routes>
 
       <footer className="footer">

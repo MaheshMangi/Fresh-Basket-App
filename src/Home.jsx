@@ -1,15 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css'; // Optional CSS for better visuals
-import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from './store'; 
-import './Milk.css';
+ 
+ 
+ 
 
  
   const Home = () => {
-  // Accessing the milk products from the Redux store
-  const milkProducts = useSelector((globalstate) => globalstate.products.milk);
-  const dispatch = useDispatch();
+   
 
   const items = [
     {
@@ -48,8 +46,16 @@ import './Milk.css';
       img: 'vegetables.jfif',
     },
   ];
+
+   const features = [
+    { icon: '🚀', title: 'Fast Delivery', description: 'Get your order delivered to your doorstep in under 30 minutes!' },
+    { icon: '🥗', title: 'Fresh & Healthy Food', description: 'All meals are prepared with fresh, organic ingredients to ensure quality.' },
+    { icon: '🌱', title: 'Organic Items', description: 'Our products are sourced from local farms with a focus on organic practices.' }
+  ];
+
   return (
     <>
+    
     <div className="home-container" style={{ padding: '2rem', textAlign: 'center' }}>
       <h1 style={{color:'white'}}>Welcome to Fresh Basket App! 🍽️</h1>
       <p style={{ margin: '1rem 0', fontSize: '1.2rem',color:'white' }}>
@@ -72,25 +78,25 @@ export default Veg;
           <li>✅ Easy Online Ordering</li>
           <li>✅ Secure Payment</li>
         </ul>
+        
       </div>
+      
     </div>
-<div className="milk-container">
-      <h2>Milk Products</h2>
-      <div className="milk-items">
-        {milkProducts.map((product) => (
-          <div key={product.name} className="milk-item">
-            <img src={product.image} alt={product.name} className="milk-image" />
-            <h3 className="milk-name">{product.name}</h3>
-            <p className="milk-price">₹{product.price}</p>
-            <button onClick={() => dispatch(addToCart(product))}>Add To Cart🛒</button> {/* Dispatching addToCart */}
-          </div>
-        ))}
-      </div>
-    </div>
+   
+ 
 <div className="h">
 <h1>Veg-Food-Court</h1>
 <p>(Fresh veg food)</p>
 </div>
+ <div className="features-section"> 
+          {features.map((feature, index) => (
+            <div className="feature-card" key={index}>
+              <div className="feature-icon">{feature.icon}</div>
+              <h3>{feature.title}</h3>
+              <p>{feature.description}</p>
+            </div>
+          ))}
+        </div>
 <div className="container">
 {items.map((item, index) => (
   <div className="cart" key={index}>
@@ -102,6 +108,7 @@ export default Veg;
   </div>
 ))}
 </div>
+
 
 </>
   );

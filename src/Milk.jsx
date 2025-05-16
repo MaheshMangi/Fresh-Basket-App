@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from './store'; 
 import './Milk.css';
+import { toast, ToastContainer } from 'react-toastify';
 
 const priceRanges = [
   { value: 'Rs1 to Rs50', min: 1, max: 50 },
@@ -48,7 +49,7 @@ const Milk = () => {
   return (
     <div className="milk-container">
       <h2>Milk Products</h2>
-
+      <ToastContainer position='top-right' autoClose={2000}/>
       {/* Price Range Filters */}
       <div className="price-filters">
         {priceRanges.map(range => (
@@ -70,7 +71,7 @@ const Milk = () => {
             <img src={product.image} alt={product.name} className="milk-image" />
             <h3 className="milk-name">{product.name}</h3>
             <p className="milk-price">₹{product.price}</p>
-            <button onClick={() => dispatch(addToCart(product))}>Add To Cart 🛒</button>
+            <button onClick={() => {dispatch(addToCart(product)); toast.success("Product added to cart successfuly")}}>Add To Cart 🛒</button>
           </div>
         ))}
       </div>

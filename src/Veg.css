@@ -6,6 +6,7 @@
   text-align: center;
   background-color: #f8f9fa;
   min-height: 100vh;
+   
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   transition: background-color 0.3s ease, padding 0.3s ease;
 }

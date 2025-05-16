@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './Veg.css';
 import { addToCart } from './store';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Veg = () => {
   const vegProducts = useSelector((globalstate) => globalstate.products.Veg);
@@ -38,6 +39,7 @@ const Veg = () => {
   return (
     <div className="veg-container">
       <h2>Vegetable Products</h2>
+      <ToastContainer position='top-right' autoClose={3000}/>
 
       {/* Price Range Slider */}
       <div className="price-range-slider">
@@ -68,7 +70,7 @@ const Veg = () => {
             <img src={product.image} alt={product.name} className="veg-image" />
             <h3 className="veg-name">{product.name}</h3>
             <p className="veg-price">₹{product.price}</p>
-            <button onClick={() => dispatch(addToCart(product))}>Add To Cart 🛒</button>
+            <button onClick={() => {dispatch(addToCart(product)); toast.success("Product added to cart successfuly")}}>Add To Cart 🛒</button>
           </div>
         ))}
       </div>

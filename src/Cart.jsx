@@ -7,6 +7,7 @@ import QRCode from 'react-qr-code';
 import Confetti from 'react-confetti';
 import { useWindowSize } from 'react-use';
 import emailjs from 'emailjs-com';
+import { toast, ToastContainer } from 'react-toastify';
 
 function Cart() {
   const cartItems = useSelector(globalstate => globalstate.cart);
@@ -206,6 +207,7 @@ function Cart() {
 
   return (
     <>
+    <ToastContainer position='top-right' autoClose={3000}/>
       {showConfetti && <Confetti width={width} height={height} recycle={false} />}
 
       <div className="cart-container">
@@ -240,7 +242,7 @@ function Cart() {
                       <td>
                         <button className="btn increment-btn" onClick={() => dispatch(incrementCart(item))}>+</button>
                         <button className="btn decrement-btn" onClick={() => dispatch(decrementCart(item))}>-</button>
-                        <button className="btn remove-btn" onClick={() => dispatch(removeFromCart(item))}>Remove</button>
+                        <button className="btn remove-btn" onClick={() => {dispatch(removeFromCart(item)); toast.error("Your item is removed")}}>Remove</button>
                       </td>
                     </tr>
                   ))}
