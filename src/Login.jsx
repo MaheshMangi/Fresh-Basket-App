@@ -21,7 +21,7 @@ const Login = () => {
   };
 
   return (
-    <div className="form-container">
+    <div className="form-container1">
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <input 
@@ -40,7 +40,7 @@ const Login = () => {
       </form>
       <p>
         Don't have an account?{" "}
-        <Link to="/registre" className="link-btn">Register Here</Link>
+        <Link to="/register" className="link-btn">Register Here</Link>
       </p>
     </div>
   );

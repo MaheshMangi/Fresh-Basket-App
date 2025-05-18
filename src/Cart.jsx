@@ -89,7 +89,7 @@ function Cart() {
      // Check if user is logged in
     if (!user) {
       alert("You must be logged in to complete the payment.");
-      navigate('/registre'); // Redirect to Register page
+      navigate('/register'); // Redirect to Register page
       return;
     }
 
