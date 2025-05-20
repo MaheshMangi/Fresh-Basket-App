@@ -19,48 +19,48 @@ const Home = () => {
 const restaurants = [
   {
     name: 'The French Laundry',
-    image: 'public/The French Laundry.jpg',
+    image: '/The French Laundry.jpg',
     description: 'A world-renowned restaurant in California offering fine French cuisine.',
   },
   {
     name: 'Eleven Madison Park',
-    image: 'public/Eleven Madison Park.jpeg',
+    image: '/Eleven Madison Park.jpeg',
     description: 'Elegant New York dining experience with modern and seasonal tasting menus.',
   },
   {
     name: 'Gaggan',
-    image: 'public/Gaggan.jpg',
+    image: '/Gaggan.jpg',
     description: 'Bangkok-based progressive Indian cuisine that redefines flavor and style.',
   },
    
   {
     name: 'Osteria Francescana',
-    image: 'public/Osteria Francescana.jpg',
+    image: '/Osteria Francescana.jpg',
     description: 'Three-Michelin-star Italian restaurant by Massimo Bottura in Modena.',
   },
   {
     name: 'Le Bernardin',
-    image: 'public/Le Bernardin.jpg',
+    image: '/Le Bernardin.jpg',
     description: 'Seafood-focused, French fine dining in the heart of New York City.',
   },
   {
     name: 'Per Se',
-    image: 'public/Per Se.jpg',
+    image: '/Per Se.jpg',
     description: 'Thomas Keller’s upscale NYC restaurant with beautiful Central Park views.',
   },
   {
     name: 'Quintonil',
-    image: 'public/Quintonil.jpg',
+    image: '/Quintonil.jpg',
     description: 'Contemporary Mexican cuisine in Mexico City with local, sustainable ingredients.',
   },
   {
     name: 'Mugaritz',
-    image: 'public/Mugaritz.jpg',
+    image: '/Mugaritz.jpg',
     description: 'Avant-garde Spanish restaurant near San Sebastián, known for creativity.',
   },
   {
     name: 'Pujol',
-    image: 'public/Pujol.jpg',
+    image: '/Pujol.jpg',
     description: 'Iconic Mexican fine dining with a focus on native ingredients and innovation.',
   },
 ];
