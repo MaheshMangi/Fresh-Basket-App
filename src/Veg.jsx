@@ -24,7 +24,7 @@ const Veg = () => {
   const filteredProducts = vegProducts.filter(product => product.price <= priceLimit);
 
   // Pagination logic
-  const itemsPerPage = 10;
+  const itemsPerPage = 8;
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
   const indexOfLastProduct = currentPage * itemsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;

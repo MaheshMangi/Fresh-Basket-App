@@ -12,7 +12,7 @@ const nonVeg = () => {
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  const itemsPerPage = 8;
   const totalPages = Math.ceil(vegProducts.length / itemsPerPage);
 
   // Calculate items for the current page

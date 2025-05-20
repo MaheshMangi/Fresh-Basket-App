@@ -19,7 +19,7 @@ const Milk = () => {
   const dispatch = useDispatch();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  const itemsPerPage = 8;
 
   // Filtering
   const [selectedRanges, setSelectedRanges] = useState([]);
