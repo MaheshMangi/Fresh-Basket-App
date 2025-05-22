@@ -12,6 +12,7 @@ const Veg = () => {
   const [favorites, setFavorites] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const [priceLimit, setPriceLimit] = useState(200); // Slider default
+  const [searchTerm, setSearchTerm] = useState(''); // Search term state
 
   const toggleFavorite = (index) => {
     setFavorites((prevFavorites) => ({
@@ -20,8 +21,11 @@ const Veg = () => {
     }));
   };
 
-  // Filter products within selected price
-  const filteredProducts = vegProducts.filter(product => product.price <= priceLimit);
+  // Filter products by price and search term (case-insensitive)
+  const filteredProducts = vegProducts.filter(product => 
+    product.price <= priceLimit &&
+    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   // Pagination logic
   const itemsPerPage = 8;
@@ -41,6 +45,20 @@ const Veg = () => {
       <h2>Vegetable Products</h2>
       <ToastContainer position='top-right' autoClose={3000}/>
 
+      {/* Search Bar */}
+      <div className="search-bar" style={{ marginBottom: '1rem' }}>
+        <input
+          type="text"
+          placeholder="Search vegetables..."
+          value={searchTerm}
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+            setCurrentPage(1); // reset to page 1 when searching
+          }}
+          style={{ padding: '8px', width: '100%', maxWidth: '300px' }}
+        />
+      </div>
+
       {/* Price Range Slider */}
       <div className="price-range-slider">
         <label htmlFor="priceRange">Filter by Price: ₹1 to ₹{priceLimit}</label>
@@ -58,21 +76,25 @@ const Veg = () => {
       </div>
 
       <div className="veg-items">
-        {currentProducts.map((product, index) => (
-          <div key={index} className="veg-item">
-            <div className="fav-icon" onClick={() => toggleFavorite(index)}>
-              {favorites[index] ? (
-                <AiFillHeart className="favorite" />
-              ) : (
-                <AiOutlineHeart className="not-favorite" />
-              )}
+        {currentProducts.length > 0 ? (
+          currentProducts.map((product, index) => (
+            <div key={index} className="veg-item">
+              <div className="fav-icon" onClick={() => toggleFavorite(index)}>
+                {favorites[index] ? (
+                  <AiFillHeart className="favorite" />
+                ) : (
+                  <AiOutlineHeart className="not-favorite" />
+                )}
+              </div>
+              <img src={product.image} alt={product.name} className="veg-image" />
+              <h3 className="veg-name">{product.name}</h3>
+              <p className="veg-price">₹{product.price}</p>
+              <button onClick={() => {dispatch(addToCart(product)); toast.success("Product added to cart successfuly")}}>Add To Cart 🛒</button>
             </div>
-            <img src={product.image} alt={product.name} className="veg-image" />
-            <h3 className="veg-name">{product.name}</h3>
-            <p className="veg-price">₹{product.price}</p>
-            <button onClick={() => {dispatch(addToCart(product)); toast.success("Product added to cart successfuly")}}>Add To Cart 🛒</button>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p>No products found matching your criteria.</p>
+        )}
       </div>
 
       {/* Pagination Controls */}

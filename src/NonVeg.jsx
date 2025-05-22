@@ -1,63 +1,109 @@
 // src/components/Veg.jsx
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import './nonVeg.css'; // Import the CSS file for Veg component
+import './nonVeg.css';
 import { addToCart } from './store';
 import { toast, ToastContainer } from 'react-toastify';
 
-const nonVeg = () => {
-  // Accessing the veg products from the Redux store
-  const vegProducts = useSelector((globalstate) => globalstate.products.nonVeg);
-  let dispatch = useDispatch();
+const NonVeg = () => {
+  const vegProducts = useSelector((state) => state.products.nonVeg);
+  const dispatch = useDispatch();
 
-  // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
-  const totalPages = Math.ceil(vegProducts.length / itemsPerPage);
 
-  // Calculate items for the current page
+  const [minPrice, setMinPrice] = useState('');
+  const [maxPrice, setMaxPrice] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+
+  // Apply filters
+  const filteredProducts = vegProducts.filter((product) => {
+    const price = product.price;
+    const min = minPrice ? parseInt(minPrice) : 0;
+    const max = maxPrice ? parseInt(maxPrice) : Infinity;
+
+    return (
+      price >= min &&
+      price <= max &&
+      product.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  });
+
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentItems = vegProducts.slice(startIndex, endIndex);
+  const currentItems = filteredProducts.slice(startIndex, startIndex + itemsPerPage);
 
   const goToPage = (pageNumber) => {
-    setCurrentPage(pageNumber);
+    if (pageNumber >= 1 && pageNumber <= totalPages) {
+      setCurrentPage(pageNumber);
+    }
   };
 
   return (
     <div className="nonVeg-container">
       <h2>Non-Veg Products</h2>
-       <ToastContainer position='top-right' autoClose={2000}/>
-      <div className="nonVeg-items">
-        {currentItems.map((product, index) => (
-          <div key={index} className="nonVeg-item">
-            <img src={product.image} alt={product.name} className="nonVeg-image" />
-            <h3 className="nonVeg-name">{product.name}</h3>
-            <p className="nonVeg-price">₹{product.price}</p>
-            <button onClick={() => {dispatch(addToCart(product)); toast.success("Product added to cart successfuly")}}>Add To Cart 🛒</button>
-          </div>
-        ))}
+      <ToastContainer position="top-right" autoClose={2000} />
+
+      {/* Filter Inputs */}
+      <div className="filter-section">
+        <input
+          type="text"
+          placeholder="Search by name"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <input
+          type="number"
+          placeholder="Min Price"
+          value={minPrice}
+          onChange={(e) => setMinPrice(e.target.value)}
+        />
+        <input
+          type="number"
+          placeholder="Max Price"
+          value={maxPrice}
+          onChange={(e) => setMaxPrice(e.target.value)}
+        />
+        <button onClick={() => setCurrentPage(1)}>Apply Filters</button>
       </div>
 
-      {/* Pagination Controls */}
+      {/* Product List */}
+      <div className="nonVeg-items">
+        {currentItems.length === 0 ? (
+          <p>No products match the selected filters.</p>
+        ) : (
+          currentItems.map((product, index) => (
+            <div key={index} className="nonVeg-item">
+              <img src={product.image} alt={product.name} className="nonVeg-image" />
+              <h3 className="nonVeg-name">{product.name}</h3>
+              <p className="nonVeg-price">₹{product.price}</p>
+              <button
+                onClick={() => {
+                  dispatch(addToCart(product));
+                  toast.success(`${product.name} added to cart successfully`);
+                }}
+              >
+                Add To Cart 🛒
+              </button>
+            </div>
+          ))
+        )}
+      </div>
+
+      {/* Pagination */}
       <div className="pagination">
         <button onClick={() => goToPage(currentPage - 1)} disabled={currentPage === 1}>
           Previous
         </button>
-
-        {Array.from({ length: totalPages }, (_, index) => (
+        {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
           <button
-            key={index + 1}
-            onClick={() => goToPage(index + 1)}
-            style={{
-              margin: '0 5px',
-              fontWeight: currentPage === index + 1 ? 'bold' : 'normal',
-            }}
+            key={pageNum}
+            onClick={() => goToPage(pageNum)}
+            style={{ fontWeight: currentPage === pageNum ? 'bold' : 'normal' }}
           >
-            {index + 1}
+            {pageNum}
           </button>
         ))}
-
         <button onClick={() => goToPage(currentPage + 1)} disabled={currentPage === totalPages}>
           Next
         </button>
@@ -66,4 +112,4 @@ const nonVeg = () => {
   );
 };
 
-export default nonVeg;
+export default NonVeg;

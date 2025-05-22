@@ -23,6 +23,7 @@ const Milk = () => {
 
   // Filtering
   const [selectedRanges, setSelectedRanges] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const handleCheckboxRange = (selectedRange) => {
     if (selectedRanges.includes(selectedRange)) {
@@ -34,11 +35,11 @@ const Milk = () => {
   };
 
   const activeRanges = priceRanges.filter(range => selectedRanges.includes(range.value));
-  const filteredProducts = selectedRanges.length === 0
-    ? milkProducts
-    : milkProducts.filter(product =>
-        activeRanges.some(range => product.price >= range.min && product.price <= range.max)
-      );
+  const filteredProducts = milkProducts.filter(product => {
+    const matchesPrice = selectedRanges.length === 0 || activeRanges.some(range => product.price >= range.min && product.price <= range.max);
+    const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesPrice && matchesSearch;
+  });
 
   // Pagination logic based on filtered products
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
@@ -50,6 +51,20 @@ const Milk = () => {
     <div className="milk-container">
       <h2>Milk Products</h2>
       <ToastContainer position='top-right' autoClose={2000}/>
+
+      {/* Search Bar */}
+      <div className="search-bar">
+        <input
+          type="text"
+          placeholder="Search by name"
+          value={searchTerm}
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+            setCurrentPage(1);
+          }}
+        />
+      </div>
+
       {/* Price Range Filters */}
       <div className="price-filters">
         {priceRanges.map(range => (
