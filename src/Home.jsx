@@ -88,8 +88,8 @@ const restaurants = [
     <img src="kira.jfif" alt="Item 4" /> 
     <img src="vege.jfif" alt="Item 6" />
     <img src="vegetables.jfif" alt="Item 7" /> 
-    <img src="public/nonVegImages/Fish Curry.jpg" alt="Item 9" />
-    <img src="public/MilkImages/Buffalo Milk.jpg" alt="Item 9" />  
+    <img src="/nonVegImages/Fish Curry.jpg" alt="Item 9" />
+    <img src="/MilkImages/Buffalo Milk.jpg" alt="Item 9" />  
   </div>
 </div>
 {/* Features Section */}
